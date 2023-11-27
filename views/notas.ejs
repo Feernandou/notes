@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <a id="inicio" href="/">Inicio</a>
+    <h1>Bienvenido, <%= user.nombre %></h1>
+    <button onclick="crearNota()">Crear</button>
+    <div class="box">
+        <div class="form">
+            <form action="/subir" method="post">
+                Titulo: <br>
+                <input type="text" name="titulo"> <br>
+                Contenido: <br>
+                <textarea name="contenido" id="" cols="30" rows="10"></textarea> <br>
+                <input type="hidden" name="autorID" value="<%= user.id %>" >
+                
+                <div class="buttons">
+                    <input type="submit" value="Enviar">
+                    <a onclick="cerrar()">Cerrar</a>
+                </div>
+                
+            </form>
+            
+        </div>
+    </div>
+    <h2><u>Notas:</u></h2>
+    <div class="box-nota">
+    <% notas.forEach(function(nota){%>
+        <div class="nota">
+            <h3><u><%= nota.titulo %></u></h3>
+            <p><%= nota.contenido %></p>
+        </div>
+        <%}) %>
+    </div>
+    <script src="/logica.js"></script>
+</body>
+</html>
